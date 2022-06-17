@@ -1,0 +1,49 @@
+<%- include("partial/header.ejs") %>
+
+  <div class="container my-3">
+    <form action="/newarticle" method="POST">
+      <div class="row">
+        <div class="col-25">
+          <label for="heading">Article heading</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="heading" name="heading" placeholder="Enter heading">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="subheading">Article Sub-heading</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="subheading" name="subheading" placeholder="Subheading goes here">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="fpara">Subjectt Intro</label>
+        </div>
+        <div class="col-75">
+          <textarea id="fpara" name="fpara" placeholder="Write something.." style="height:200px"></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="mpara">Article Middle</label>
+        </div>
+        <div class="col-75">
+          <textarea id="mpara" name="mpara" placeholder="Write something.." style="height:200px"></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="epara">Conclusion</label>
+        </div>
+        <div class="col-75">
+          <textarea id="epara" name="epara" placeholder="Write something.." style="height:200px"></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <input type="submit" value="Submit">
+      </div>
+    </form>
+  </div>

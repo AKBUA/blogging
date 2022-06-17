@@ -1,0 +1,24 @@
+<%- include("partial/header.ejs") %>
+
+<% for(var i=0;i<obj.length;i++){ %>
+
+    <div>
+        <h4 style="color:rgba(255, 234, 0, 0.794)">
+            <%= obj[i].heading %>
+        </h4>
+        <p>
+            <%= obj[i].subheading %>
+        </p>
+        <p>
+            <%= obj[i].fpara %>
+        </p>
+        <p>
+            <%= obj[i].mpara%>
+        </p>
+        <p>
+            <%= obj[i].epara%>
+        </p>
+    </div>
+    <% } %>
+
+    <%- include("partial/footer.ejs") %>

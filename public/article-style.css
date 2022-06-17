@@ -1,0 +1,24 @@
+.article-container{
+    width:90%;
+margin-left:5%;
+}
+.article-subheading{
+    font-size: 1.5rem;
+    margin:0;
+    margin-bottom: 1.5em;
+}
+.article-heading{
+    margin-top: 1em;
+}
+.article-fpara,.article-epara,.article-lpara{
+    font-size: 1.5rem;
+}
+@media (max-width:670px)
+{
+.article-container{
+    width:98%;
+    margin-left: 1%;
+}
+}
+
+
