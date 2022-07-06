@@ -1,4 +1,4 @@
-const { response } = require("express");
+          const { response } = require("express");
 var express=require("express");//require 
 var app=express()//app-server making
 app.listen(process.env.PORT||3000,()=>{console.log("Server is running at 3000");})
@@ -37,13 +37,25 @@ mongoose.connect("mongodb+srv://abhi0408:abhi0408@cluster0.appa7wy.mongodb.net/m
 const schema=mongoose.Schema({
     heading:String,
     subheading:String,
+    avatar:
+    {
+        data: Buffer,
+        contentType: String
+    },
     fpara:String,
     mpara:String,
     epara:String,
+
     times:String,
 
 })
 const NewArticle=mongoose.model("article",schema)
+app.get("/contact",(req,res)=>{
+   
+    res.render(__dirname +"/views/contact.ejs")
+    
+})
+
 
 
 app.get("/write",(req,res)=>{
@@ -80,6 +92,8 @@ app.post("/newarticle",(req,res)=>{
     var obj={
            heading:req.body.heading,
            subheading:req.body.subheading,
+           avatar:req.body.avatar,
+
             fpara:req.body.fpara,
             mpara:req.body.mpara,
              epara:req.body.epara,

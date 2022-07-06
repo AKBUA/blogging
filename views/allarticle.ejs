@@ -2,12 +2,16 @@
 
 <% for(var i=0;i<obj.length;i++){ %>
 
-    <div>
-        <h4 style="color:rgba(255, 234, 0, 0.794)">
+    <div class="allarticles">
+        <h4 style="color:rgba(255, 234, 0, 0.794);font-weight:bold">
             <%= obj[i].heading %>
         </h4>
-        <p>
+        <p style="font-weight: bold;">
             <%= obj[i].subheading %>
+        </p>
+        <p>
+            <%= obj[i].avatar %>
+
         </p>
         <p>
             <%= obj[i].fpara %>
