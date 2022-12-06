@@ -1,28 +1,38 @@
 <%- include("partial/header.ejs") %>
 
-<% for(var i=0;i<obj.length;i++){ %>
+<% for(var i=0;i<obj.length ;i++){ %>
 
     <div class="allarticles">
-        <h4 style="color:rgba(255, 234, 0, 0.794);font-weight:bold">
+        <h4 style="color:brown;font-weight:bold;font-size: 1.8em;">
             <%= obj[i].heading %>
-        </h4>
-        <p style="font-weight: bold;">
+        </h4><br>
+        <p style="font-weight: bold; font-size: 1.1em;">
             <%= obj[i].subheading %>
         </p>
         <p>
             <%= obj[i].avatar %>
 
-        </p>
+        </p><br>
         <p>
             <%= obj[i].fpara %>
-        </p>
+        </p><br>
         <p>
             <%= obj[i].mpara%>
         </p>
         <p>
             <%= obj[i].epara%>
         </p>
+        <!-- <h1>Comments Section</h1>
+        <form action="/commented" method="POST" class="form">
+            <input type="text" class="name" id= "name" name="name" placeholder="Enter your name"><br>
+            <textarea name="comment" cols="20" rows="10"  class="comment" id="comment" placeholder="Drop your comment"></textarea><br>
+            <button type="submit">Post Comment</button>
+            
+        </form> -->
+       
     </div>
     <% } %>
+    
+    
 
     <%- include("partial/footer.ejs") %>

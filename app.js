@@ -1,4 +1,4 @@
-          const { response } = require("express");
+ const { response } = require("express");
 var express=require("express");//require 
 var app=express()//app-server making
 app.listen(process.env.PORT||3000,()=>{console.log("Server is running at 3000");})
@@ -29,34 +29,49 @@ app.get("/",(req,res)=>{
 
 var mongoose=require("mongoose");
 const res = require("express/lib/response");
-mongoose.connect("mongodb+srv://abhi0408:abhi0408@cluster0.appa7wy.mongodb.net/myusers").then((e)=>{
+mongoose.connect("mongodb+srv://abhi0408:abhi0408@cluster0.appa7wy.mongodb.net/blogging-site").then((e)=>{
     console.log("Db connected")})//port setting for database
-
 
 //creating schema
 const schema=mongoose.Schema({
     heading:String,
     subheading:String,
-    avatar:
-    {
-        data: Buffer,
-        contentType: String
-    },
+
     fpara:String,
     mpara:String,
     epara:String,
-
     times:String,
+    
 
 })
+
+
+
+
+const mail=mongoose.Schema({
+name:String,
+email:String,
+})
+
 const NewArticle=mongoose.model("article",schema)
+
+const Email=mongoose.model("Email",mail)
+app.post("/contactSaved",(req,res)=>{
+   
+
+    var mail = {
+        name:req.body.name, email:req.body.email,
+    }
+        var mailInfo=Email(mail);
+        mailInfo.save();
+        res.send(`<h1>Your Details has been send</h1>`)
+    });
+    
+
+
 app.get("/contact",(req,res)=>{
    
-    res.render(__dirname +"/views/contact.ejs")
-    
-})
-
-
+        res.render(__dirname +"/views/contact.ejs")});
 
 app.get("/write",(req,res)=>{
     res.render(__dirname +"/views/write.ejs")
@@ -64,7 +79,7 @@ app.get("/write",(req,res)=>{
 })
 app.get("/articles",(req,res)=>{
     NewArticle.find({},(err,data)=>{
-    //  console.log(data);
+
 
     if(!err){
         res.render(__dirname+"/views/allarticle.ejs",{obj:data})
@@ -73,49 +88,29 @@ app.get("/articles",(req,res)=>{
         res.send("some error occured");
     }
     })
+
 })
-// app.get("/articles",(req,res)=>{
-//     res.render(__dirname +"/views/allarticle.ejs")
-// })
+
 
 app.post("/newarticle",(req,res)=>{
-    //console.log(req.body);
-    // var obj={
-    //     h:req.body.heading,
-    //     sh:req.body.subheading,
-    //     fp:req.body.fpara,
-    //     mp:req.body.mpara,
-    //     ep:req.body.epara,
 
-    // }
-    // res.render(__dirname+"/views/article",obj)
     var obj={
            heading:req.body.heading,
            subheading:req.body.subheading,
            avatar:req.body.avatar,
-
-            fpara:req.body.fpara,
+           fpara:req.body.fpara,
             mpara:req.body.mpara,
              epara:req.body.epara,
              times:Date.now(),
     }
+    
 
     var article=NewArticle(obj);
     article.save();
     res.send(`<h1>Your Article is saved</h1>`)
 
 
-});         
-// app.get("/articles",(req,res)=>{
-//     NewArticle.find({},(err,data)=>{
-//     //     console.log("found---"+data);
+});  
 
-   //     if(!err){
-//         res.render(__dirname+"/views/allarticles.ejs",{d:data})
-//     }
-//     else{
-//         res.send("some error occured");
-//     }
-//     })
-// })
+
 
