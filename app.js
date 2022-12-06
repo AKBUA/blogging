@@ -29,7 +29,7 @@ app.get("/",(req,res)=>{
 
 var mongoose=require("mongoose");
 const res = require("express/lib/response");
-mongoose.connect("mongodb+srv://abhi0408:abhi0408@cluster0.appa7wy.mongodb.net/blogging-site").then((e)=>{
+mongoose.connect("mongodb://localhost:27017/blogging").then((e)=>{
     console.log("Db connected")})//port setting for database
 
 //creating schema
